@@ -4,9 +4,12 @@ session_start();
 require 'includes/functions.php';
 
 if (!authenticate()) {
-    header("Location:login.php");
-}
+  header("Location:login.php");
+} 
 
+if (!still_active()) {
+  header("Location:login.php");
+}
 ?>
 
 
@@ -31,180 +34,184 @@ include "includes/header.php";
                   <label for="lawyer-ref-horizontal">Lawyer Ref.</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="leading-entity-name-horizontal" type="text" class="validate form-control" required>
-                  <label for="lawyer-ref-horizontal">Leading Entity Name</label>
+                  <input name="leading-entity-name-horizontal" id="leading-entity-name-horizontal" type="text" class="validate form-control" required>
+                  <label for="leading-entity-name-horizontal">Leading Entity Name</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="gross-purchase-loan-horizontal" type="number" class="validate form-control" required>
+                  <input name="gross-purchase-loan-horizontal" id="gross-purchase-loan-horizontal" type="number" class="validate form-control form-icon-trailing" required>
                   <label for="gross-purchase-loan-horizontal">Gross Purchase Loan (£)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="net-purchase-loan-horizontal" type="number" class="validate form-control" required>
+                  <input name="net-purchase-loan-horizontal" id="net-purchase-loan-horizontal" type="number" class="validate form-control" required>
                   <label for="net-purchase-loan-horizontal">Net Purchase Loan (£)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
-                  <input name="gross-development-loan-horizontal" type="number" class="validate form-control" required>
+                  <input name="gross-development-loan-horizontal" id="gross-development-loan-horizontal" type="number" class="validate form-control" required>
                   <label for="gross-development-loan-horizontal">Gross Development Loan (£)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="net-development-loan-horizontal" type="number" class="validate form-control" required>
+                  <input name="net-development-loan-horizontal" id="net-development-loan-horizontal" type="number" class="validate form-control" required>
                   <label for="net-development-loan-horizontal">Net Development Loan (£)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="monthly-interest-horizontal" type="number" class="validate form-control" required>
+                  <input name="monthly-interest-horizontal" id="monthly-interest-horizontal" type="number" class="validate form-control" required>
                   <label for="monthly-interest-horizontal">Monthly Interest (%)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="arrangment-fee-horizontal" type="number" class="validate form-control" required>
+                  <input name="arrangment-fee-horizontal" id="arrangment-fee-horizontal" type="number" class="validate form-control" required>
                   <label for="arrangment-fee-horizontal">Arrangment Fee (%)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="exit-fee-horizontal" type="number" class="validate form-control" required>
+                  <input name="exit-fee-horizontal" id="exit-fee-horizontal" type="number" class="validate form-control" required>
                   <label for="exit-fee-horizontal">Exit Fee (%)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="loan-type-horizontal" type="text" class="validate form-control" required>
+                  <input name="loan-type-horizontal" id="loan-type-horizontal" type="text" class="validate form-control" required>
                   <label for="loan-type-horizontal">Loan Type</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="retained-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="retained-months-horizontal" id="retained-months-horizontal" type="number" class="validate form-control" required>
                   <label for="retained-months-horizontal">Retained Months</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="rolled-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="rolled-months-horizontal" id="rolled-months-horizontal" type="number" class="validate form-control" required>
                   <label for="rolled-months-horizontal">Rolled Months</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="service-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="service-months-horizontal" id="service-months-horizontal" type="number" class="validate form-control" required>
                   <label for="service-months-horizontal">Service Months</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="development-retained-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="development-retained-months-horizontal" id="development-retained-months-horizontal" type="number" class="validate form-control">
                   <label for="development-retained-months-horizontal">Development Retained Months</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="development-rolled-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="development-rolled-months-horizontal" id="development-rolled-months-horizontal" type="number" class="validate form-control">
                   <label for="development-rolled-months-horizontal">Development Rolled Months</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
-                  <input name="development-service-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="development-service-months-horizontal" id="development-service-months-horizontal" type="number" class="validate form-control">
                   <label for="development-service-months-horizontal">Development Service Months</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="min-term-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="min-term-months-horizontal" id="min-term-months-horizontal" type="number" class="validate form-control" required>
                   <label for="min-term-months-horizontal">Min Term Months</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="max-loan-term-months-horizontal" type="number" class="validate form-control" required>
+                  <input name="max-loan-term-months-horizontal" id="max-loan-term-months-horizontal" type="number" class="validate form-control" required>
                   <label for="max-loan-term-months-horizontal">Max Loan Term Months</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="legal-start-date-horizontal" type="date" class="validate form-control" required>
-                  <label for="legal-start-date-horizontal">Legal Start Date</label>
+                  <input name="legal-start-date-horizontal" id="legal-start-date-horizontal" type="date" class="validate form-control" required>
+                  <label class="active" for="legal-start-date-horizontal">Legal Start Date</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="interest-start-date-horizontal" type="date" class="validate form-control" required>
+                  <input name="interest-start-date-horizontal" id="interest-start-date-horizontal" type="date" class="validate form-control" required>
                   <label for="interest-start-date-horizontal">Interest Start Date</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="max-date-horizontal" type="date" class="validate form-control" required>
+                  <input name="max-date-horizontal" id="max-date-horizontal" type="date" class="validate form-control" required>
                   <label for="max-date-horizontal">Max Date</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="radeemed-date-horizontal" type="date" class="validate form-control" required>
+                  <input name="radeemed-date-horizontal" id="radeemed-date-horizontal" type="date" class="validate form-control">
                   <label for="radeemed-date-horizontal">Radeemed Date</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="loan-to-value-horizontal" type="number" class="validate form-control" required>
+                  <input name="loan-to-value-horizontal" id="loan-to-value-horizontal" type="number" class="validate form-control" required>
                   <label for="loan-to-value-horizontal">Loan to Value (%)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="loan-to-cost-horizontal" type="number" class="validate form-control" required>
+                  <input name="loan-to-cost-horizontal" id="loan-to-cost-horizontal" type="number" class="validate form-control" required>
                   <label for="loan-to-cost-horizontal">Loan to Cost (%)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="loan-to-gross-development-value-horizontal" type="number" class="validate form-control" required>
+                  <input name="loan-to-gross-development-value-horizontal" id="loan-to-gross-development-value-horizontal" type="number" class="validate form-control" required>
                   <label for="loan-to-gross-development-value-horizontal">Loan to Gross Development Value (%)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="loan-to-purchase-horizontal" type="number" class="validate form-control" required>
+                  <input name="loan-to-purchase-horizontal" id="loan-to-purchase-horizontal" type="number" class="validate form-control" required>
                   <label for="loan-to-purchase-horizontal">Loan to Purchase (%)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="broker-name-horizontal" type="text" class="validate form-control" required>
+                  <input name="broker-name-horizontal" id="broker-name-horizontal" type="text" class="validate form-control">
                   <label for="broker-name-horizontal">Broker Name</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="broker-email-horizontal" type="email" class="validate form-control" required>
+                  <input name="broker-email-horizontal" id="broker-email-horizontal" type="email" class="validate form-control">
                   <label for="broker-email-horizontal">Broker Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="broker-telephone-horizontal" type="tel" class="validate form-control" required>
+                  <input name="broker-telephone-horizontal" id="broker-telephone-horizontal" type="tel" class="validate form-control">
                   <label for="broker-telephone-horizontal">Broker Telephone</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="broker-mobile-number-horizontal" type="tel" class="validate form-control" required>
+                  <input name="broker-mobile-number-horizontal" id="broker-mobile-number-horizontal" type="tel" class="validate form-control">
                   <label for="broker-mobile-number-horizontal">Broker Mobile Number</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="broker-fee-horizontal" type="number" class="validate form-control" required>
+                  <input name="broker-fee-horizontal" id="broker-fee-horizontal" type="number" class="validate form-control" >
                   <label for="broker-fee-horizontal">Broker Fee</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="senior-debt-horizontal" type="number" class="validate form-control" required>
+                  <input name="senior-debt-horizontal" id="senior-debt-horizontal" type="number" class="validate form-control" >
                   <label for="senior-horizontal">Senior Debt</label>
                 </div>
               </div>
               <div class="row">
-                <div class="md-form col-12 ml-auto">
-                  <input name="senior-lender-name-horizontal" type="text" class="validate form-control" required>
+                <div class="md-form col-6 ml-auto">
+                  <input name="senior-lender-name-horizontal" id="senior-lender-name-horizontal" type="text" class="validate form-control" >
                   <label for="senior-lender-name-horizontal">Senior Lender Name</label>
+                </div>
+                <div class="md-form col-6 ml-auto">
+                  <input name="deal-name-horizontal" id="deal-name-horizontal" type="text" class="validate form-control" required>
+                  <label for="deal-name-horizontal">Deal Name</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
                   <select name="chargeType" class="mdb-select md-form validate" required>
-                    <option value="none" selected>Charge type</option>
+                    <option value="none" selected disabled>Charge type</option>
                     <option value="one">One</option>
                     <option value="two">Two</option>
                     <option value="three">Three</option>
                   </select>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <select name="interestType" class="mdb-select md-form">
-                    <option value="none" selected>Interest Type</option>
+                  <select name="interestType" class="mdb-select md-form" required>
+                    <option value="none" selected disabled>Interest Type</option>
                     <option value="one">One</option>
                     <option value="two">Two</option>
                     <option value="three">Three</option>
@@ -213,8 +220,8 @@ include "includes/header.php";
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <select name="aipCreator" class="mdb-select md-form">
-                    <option value="none" selected>AIP Creator</option>
+                  <select name="aipCreator" class="mdb-select md-form" required>
+                    <option value="none" selected disabled>AIP Creator</option>
                     <option value="maurice">Maurice</option>
                     <option value="dani">Dani</option>
                     <option value="nikesh">Nikesh</option>
@@ -225,8 +232,8 @@ include "includes/header.php";
                   </select>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <select name="loanManager" class="mdb-select md-form">
-                    <option value="none" selected>Loan Manager</option>
+                  <select name="loanManager" class="mdb-select md-form invalid" required>
+                    <option value="none" disabled selected >Loan Manager</option>
                     <option value="maurice">Maurice</option>
                     <option value="dani">Dani</option>
                     <option value="nikesh">Nikesh</option>
@@ -235,6 +242,9 @@ include "includes/header.php";
                     <option value="gittel">Gittel</option>
                     <option value="ben">Ben</option>
                   </select>
+                  <div class="invalid-feedback">
+                    Please select your class.
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -252,14 +262,14 @@ include "includes/header.php";
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
-                  <textarea name="senior-debt-comment-horizontal" class="md-textarea form-control validate" rows="3" required></textarea>
+                  <textarea name="senior-debt-comment-horizontal" id="senior-debt-comment-horizontal" class="md-textarea form-control validate" rows="3"></textarea>
                   <!-- <input id="senior-debt-comment-horizontal" type="text" class="validate form-control"> -->
                   <label for="senior-debt-comment-horizontal">Senior Debt Comments</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
-                  <textarea name="loan-background-comment-horizontal" class="md-textarea form-control validate" rows="3" required></textarea>
+                  <textarea name="loan-background-comment-horizontal" id="loan-background-comment-horizontal" class="md-textarea form-control validate" rows="3"></textarea>
                   <!-- <input id="loan-background-comment-horizontal" type="text" class="validate form-control"> -->
                   <label for="loan-background-comment-horizontal">Loan Background Comments</label>
                 </div>
@@ -277,76 +287,76 @@ include "includes/header.php";
             <div class="step-new-content">
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="borrower-name-horizontal" type="text" class="validate form-control" required>
+                  <input name="borrower-name-horizontal" id="borrower-name-horizontal" type="text" class="validate form-control" required>
                   <label for="borrower-name-horizontal">Borrower Name</label>
 
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="company-name-horizontal" type="text" class="validate form-control" required>
+                  <input name="company-name-horizontal" id="company-name-horizontal" type="text" class="validate form-control">
                   <label for="company-name-horizontal">Company Name (If Applicable)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="flat-number-horizontal" type="number" class="validate form-control" required >
+                  <input name="flat-number-horizontal" id="flat-number-horizontal" type="number" class="validate form-control" >
                   <label for="flat-number-horizontal">Flat Number (If Applicable)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="street-number-horizontal" type="number" class="validate form-control" required >
+                  <input name="street-number-horizontal" id="street-number-horizontal" type="number" class="validate form-control" required >
                   <label for="street-number-horizontal">Street Number</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="building-name-horizontal" type="text" class="validate form-control" required >
+                  <input name="building-name-horizontal" id="building-name-horizontal" type="text" class="validate form-control" >
                   <label for="building-name-horizontal">Building Name</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="street-horizontal" type="text" class="validate form-control" required >
+                  <input name="street-horizontal" id="street-horizontal" type="text" class="validate form-control" required >
                   <label for="street-horizontal">Street</label>
                 </div>
 
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="city-horizontal" type="text" class="validate form-control" required >
+                  <input name="city-horizontal" id="city-horizontal" type="text" class="validate form-control" required >
                   <label for="city-horizontal">City/Town</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="district-region-horizontal" type="text" class="validate form-control" required >
+                  <input name="district-region-horizontal" id="district-region-horizontal" type="text" class="validate form-control" >
                   <label for="district-region-horizontal">District Region</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="postcode-horizontal" type="text" class="validate form-control" required >
+                  <input name="postcode-horizontal" id="postcode-horizontal" type="text" class="validate form-control" required >
                   <label for="postcode-horizontal">Post Code</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="telephone-number-client-horizontal" type="tel" class="validate form-control" required >
+                  <input name="telephone-number-client-horizontal" id="telephone-number-client-horizontal" type="tel" class="validate form-control" required >
                   <label for="telephone-number-client-horizontal">Telephone Number</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="email-client-horizontal" type="email" class="validate form-control" required >
+                  <input name="email-client-horizontal" id="email-client-horizontal" type="email" class="validate form-control" required >
                   <label for="email-client-horizontal">Email</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="mobile-number-client-horizontal" type="tel" class="validate form-control" required >
+                  <input name="mobile-number-client-horizontal" id="mobile-number-client-horizontal" type="tel" class="validate form-control" >
                   <label for="mobile-number-client-horizontal">Mobile Number</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
-                  <textarea name="experience-horizontal" class="md-textarea form-control" rows="3"></textarea>
+                  <textarea name="experience-horizontal" id="experience-horizontal" class="md-textarea form-control" rows="3"></textarea>
                   <!-- <input name="email-client-horizontal" type="email" class="validate form-control" > -->
                   <label for="experience-horizontal">Experience / Background Story of Loan</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
-                  <textarea name="exit-strategy-horizontal" class="md-textarea form-control" rows="3"></textarea>
+                  <textarea name="exit-strategy-horizontal" id="exit-strategy-horizontal" class="md-textarea form-control" rows="3"></textarea>
                   <label for="exit-strategy-horizontal">Exit Strategy</label>
                 </div>
               </div>
@@ -366,7 +376,7 @@ include "includes/header.php";
               </div>
               <div class="row mt-4">
                 <!-- <div class="step-actions"> -->
-                <button class="waves-effect waves-dark btn btn-warning btn-rounded previous-step">Back</button>
+                  <button class="waves-effect waves-dark btn btn-warning btn-rounded previous-step">Back</button>
                   <button class="waves-effect waves-dark btn btn-info next-step btn-rounded ml-auto" data-feedback="someFunction21">Next</button>
 
                 <!-- </div> -->
@@ -423,7 +433,7 @@ include "includes/header.php";
           </li>
           <!-- STEP 5 -->
           <li class="step">
-            <div class="step-title waves-effect waves-dark">Loan Type</div>
+            <div class="step-title waves-effect waves-dark">Transactions</div>
             <div class="step-new-content">
 
               <div class="d-flex justify-content-center hover my-4 loan__add">
@@ -453,33 +463,34 @@ include "includes/header.php";
             <div class="step-new-content">
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="investor-horizontal" type="text" class="validate form-control" required>
+                  <input name="investor-horizontal" id="investor-horizontal" type="text" class="validate form-control" required>
                   <label for="investor-horizontal">Investor</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="invested-amount-horizontal" type="number" class="validate form-control" required>
+                  <input name="invested-amount-horizontal" id="invested-amount-horizontal" type="number" class="validate form-control" required>
                   <label for="invested-amount-horizontal">Invested Amount</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="date-horizontal2" type="date" class="validate form-control" required>
+                  <input name="date-horizontal2" id="date-horizontal2" type="date" class="validate form-control" required>
                   <label for="date-horizontal2">Date</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="rate-of-return-horizontal" type="number" class="validate form-control" required>
+                  <input name="rate-of-return-horizontal" id="rate-of-return-horizontal" type="number" class="validate form-control" required>
                   <label for="rate-of-return-amount-horizontal">Rate of Return (%)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
-                  <textarea name="comments-horizontal3" class="md-textarea form-control" rows="3"></textarea>
+                  <textarea name="comments-horizontal3" id="comments-horizontal3" class="md-textarea form-control" rows="3"></textarea>
                   <!-- <input id="extension-horizontal" type="number" class="validate form-control" required> -->
                   <label for="comments-horizontal3">Comments</label>
                 </div>
               </div>
               <div class="row mt-4">
                 <!-- <div class="step-actions"> -->
+                  <button class="waves-effect waves-dark btn btn-warning btn-rounded previous-step">Back</button>
                   <a class="waves-effect waves-dark btn btn-info btn-lg btn-rounded ml-auto" type="submit" name="save" role="button" aria-label="submit form" href="javascript:void(0)" onclick="document.querySelector('form').submit()">Submit</a>
                 <!-- </div> -->
               </div>
@@ -520,6 +531,7 @@ include "includes/header.php";
       setTimeout(function () {
         $('#horizontal-stepper').nextStep();
       }, 100);
+      $(window).scrollTop(0);
     }
 
     function someFunction() {

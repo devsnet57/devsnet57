@@ -5,6 +5,10 @@ require 'includes/functions.php';
 
 if (!authenticate()) {
     header("Location:login.php");
+} 
+
+if(!still_active()) {   
+    header("Location:login.php");
 }
 
 if (!authorize(array('director'))) {

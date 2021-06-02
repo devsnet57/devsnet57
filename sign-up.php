@@ -4,7 +4,7 @@ session_start();
 require "includes/db.php";
 require "includes/functions.php";
 
-if (authenticate()) {
+if (authenticate() && still_active()) {
     header("Location:form.php");
 }
 

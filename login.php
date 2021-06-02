@@ -3,9 +3,10 @@ session_start();
 
 require 'includes/functions.php';
 
-if (authenticate()) {
-    header("Location:forum.php");
+if (authenticate() && still_active()) {
+  header("Location:forum.php");
 }
+
 
 if (isset($_POST['submit_btn'])) {
     login_user($_POST);

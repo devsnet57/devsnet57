@@ -7,12 +7,24 @@ function authorize($roles){
     if(isset($_SESSION['user'])){
         return in_array($_SESSION['user']['role'],$roles);
     }
-
     return false;
 }
 
 function authenticate(){
     return isset($_SESSION['user']);
+}
+
+function still_active () {    
+    if ((time() - $_SESSION['lastLogin']) < 600) {
+
+        $_SESSION['lastLogin'] = time();
+        return true;
+
+    } else {
+
+        header("Location:logout.php");
+        return false;
+    }
 }
 
 function find_user_with_email($email){
@@ -57,6 +69,7 @@ function sign_up_user($data){
     }
 
     $_SESSION['success'] = "Congratulations! You successfully Signed Up Please Login To Continue";
+    $_SESSION['lastLogin'] = time();
 
 }
 
@@ -70,6 +83,7 @@ function login_user($data){
     if($user['password'] != md5($password)) return $_SESSION['error'] = "Password is incorrect";
 
     $_SESSION['user'] = $user;
+    $_SESSION['lastLogin'] = time();
 
     header("Location:forum.php");
 
@@ -106,7 +120,7 @@ function fetch_dashboard_stats_db(){
 function fetch_all_deals_db(){
     global $conn;
 
-    $sql = "SELECT dealId,u.first_name,u.last_name,u.email,u.role,u.id FROM form_data fd JOIN users u on u.id = fd.user_id;";
+    $sql = "SELECT dealId,u.first_name,u.last_name,u.email,u.role,u.id,fd.dealName FROM form_data fd JOIN users u on u.id = fd.user_id;";
     return $conn->query($sql);
 }
 
@@ -236,6 +250,8 @@ function create_client_and_loan_details_db($user_id){
       $rateOfReturnHorizontal = $_POST['rate-of-return-horizontal'];
       $commentsHorizontal3 = $_POST['comments-horizontal3'];
 
+      $dealName = $_POST['deal-name-horizontal'];
+
       // Loan Type Details End
 
       $query = "INSERT INTO form_data (
@@ -301,7 +317,8 @@ function create_client_and_loan_details_db($user_id){
         aipCreator,
         loanManager,
         loanStatus,
-        user_id
+        user_id,
+        dealName
        ) 
       VALUES(
         '$lawyerRef', 
@@ -366,7 +383,8 @@ function create_client_and_loan_details_db($user_id){
         '$aipCreator',
         '$loanManager',
         '$loanStatus',
-        '$user_id'
+        '$user_id',
+        '$dealName'
    )";
   
       try {

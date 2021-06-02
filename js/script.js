@@ -11,7 +11,7 @@ $(document).ready(function () {
         <label for="flat-number-horizontal2">Flat Number</label>
       </div>
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][street-number]" type="number" class="validate form-control" >
+        <input name="security-values[${currentLength}][street-number]" type="number" class="validate form-control" required>
         <label for="street-number-horizontal2">Street Number</label>
       </div>
     </div>
@@ -21,13 +21,13 @@ $(document).ready(function () {
         <label for="building-name-horizontal2">Building Name</label>
       </div>
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][street]" type="tel" class="validate form-control" >
+        <input name="security-values[${currentLength}][street]" type="tel" class="validate form-control" required>
         <label for="street-horizontal2">Street</label>
       </div>
     </div>
     <div class="row">
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][city-town]" type="text" class="validate form-control" >
+        <input name="security-values[${currentLength}][city-town]" type="text" class="validate form-control" required>
         <label for="city-town-horizontal2">City/Town</label>
       </div>
       <div class="md-form col-6 ml-auto">
@@ -37,7 +37,7 @@ $(document).ready(function () {
     </div>
     <div class="row">
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][post-code]" type="text" class="validate form-control" >
+        <input name="security-values[${currentLength}][post-code]" type="text" class="validate form-control" required>
         <label for="post-code-horizontal">Postcode</label>
       </div>
       <div class="md-form col-6 ml-auto">
@@ -51,23 +51,23 @@ $(document).ready(function () {
         <label for="leasehold-years-hold-horizontal">Leasehold Years Left</label>
       </div>
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][property-type]" type="text" class="validate form-control" >
+        <input name="security-values[${currentLength}][property-type]" type="text" class="validate form-control" required>
         <label for="property-type-horizontal">Property Type</label>
       </div>
     </div>
     <div class="row">
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][description]" type="text" class="validate form-control" >
+        <input name="security-values[${currentLength}][description]" type="text" class="validate form-control" required>
         <label for="description-horizontal">Description</label>
       </div>
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][purchase-price]" type="number" class="validate form-control" >
+        <input name="security-values[${currentLength}][purchase-price]" type="number" class="validate form-control" required>
         <label for="purchase-price-horizontal">Purchase Price (£)</label>
       </div>
     </div>
     <div class="row">
       <div class="md-form col-6 ml-auto">
-        <input name="security-values[${currentLength}][market-value]" type="number" class="validate form-control" >
+        <input name="security-values[${currentLength}][market-value]" type="number" class="validate form-control" required>
         <label for="market-value-horizontal">Market Value (£)</label>
       </div>
       <div class="md-form col-6 ml-auto">
@@ -97,8 +97,8 @@ $(document).ready(function () {
     </div>
     <div class="row">
       <div class="md-form col-12 ml-auto">
-        <select name="security-values[${currentLength}][country]" class="mdb-select md-form">
-          <option value="none" selected>Countries</option>
+        <select name="security-values[${currentLength}][country]" class="mdb-select md-form" required>
+          <option value="none" selected disabled>Countries</option>
           <option value="pakistan">Pakistan</option>
           <option value="uk">UK</option>
           <option value="usa">USA</option>
@@ -188,8 +188,8 @@ $(document).ready(function () {
 
     const loanTypeHTML = $(`
     <div class="loan__content">
-    <select  name="loan[${currentLength}][type]" class="browser-default custom-select mb-4 border-left-0 border-right-0 border-top-0">
-      <option value="none" selected>Type</option>
+    <select  name="loan[${currentLength}][type]" class="browser-default custom-select mb-4 border-left-0 border-right-0 border-top-0" required>
+      <option value="none" disabled selected>Type</option>
           <option value="drawdown">Drawdown</option>
           <option value="further advance">Further Advance</option>
           <option value="redemption0">Redemption</option>
@@ -199,11 +199,11 @@ $(document).ready(function () {
 
     <div class="row">
       <div class="md-form col-6 ml-auto">
-        <input name="loan[${currentLength}][amount]" type="number" class="validate form-control">
+        <input name="loan[${currentLength}][amount]" type="number" class="validate form-control" required>
         <label for="amount-horizontal">Amount (£)</label>
       </div>
       <div class="md-form col-6 ml-auto">
-        <input name="loan[${currentLength}][date]" type="date" class="validate form-control">
+        <input name="loan[${currentLength}][date]" type="date" class="validate form-control" required>
         <label for="date-horizontal">Date</label>
       </div>
     </div>

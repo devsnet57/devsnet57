@@ -7,6 +7,10 @@ if (!authenticate()) {
     header("Location:login.php");
 }
 
+if (!still_active() ) {
+    header("Location:login.php");
+}
+
 $deals = fetch_all_deals_db();
 ?>
 
@@ -24,6 +28,7 @@ include "includes/header.php";
         <thead class="thead-dark">
             <tr>
             <th scope="col">Deal Id</th>
+            <th scope="col">Deal Name</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
@@ -36,6 +41,7 @@ include "includes/header.php";
        <?php foreach ($deals as $row): ?>
             <tr>
                 <td><?=$row['dealId']?></td>
+                <td><?=$row['dealName']?></td>
                 <td><?=$row['first_name']?></td>
                 <td><?=$row['last_name']?></td>
                 <td><?=$row['email']?></td>
