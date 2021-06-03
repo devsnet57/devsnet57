@@ -690,7 +690,7 @@ include "includes/header.php";
   <!-- Stepper JavaScript - minified -->
   <script type="text/javascript" src="js/addons-pro/steppers.min.js"></script>
 
-  <script src="js/script.js"></script>
+  <script src="js/script1.js"></script>
 
   <!-- Custom Scripts -->
   <script>

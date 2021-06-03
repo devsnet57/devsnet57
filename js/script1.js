@@ -97,8 +97,8 @@ $(document).ready(function () {
     </div>
     <div class="row">
       <div class="md-form col-12 ml-auto">
-        <select name="security-values[${currentLength}][country]" class="mdb-select md-form" required>
-          <option value="none" selected disabled>Countries</option>
+        <select name="security-values[${currentLength}][country]" class="mdb-select md-form">
+          <option value="none" selected>Countries</option>
           <option value="pakistan">Pakistan</option>
           <option value="uk">UK</option>
           <option value="usa">USA</option>
@@ -112,7 +112,6 @@ $(document).ready(function () {
         <select name="security-values[${currentLength}][leasehold]" class="mdb-select md-form">
           <option value="leasehold">Leasehold</option>
           <option value="freehold">Freehold</option>
-  >
         </select>
       </div>        
     </div>

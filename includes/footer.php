@@ -13,7 +13,7 @@
   <!-- Stepper JavaScript - minified -->
   <script type="text/javascript" src="js/addons-pro/steppers.min.js"></script>
 
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/script1.js"></script>
 
 </body>
 </html>

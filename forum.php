@@ -123,7 +123,7 @@ include "includes/header.php";
               <div class="row">
                 <div class="md-form col-6 ml-auto">
                   <input name="legal-start-date-horizontal" id="legal-start-date-horizontal" type="date" class="validate form-control" required>
-                  <label class="active" for="legal-start-date-horizontal">Legal Start Date</label>
+                  <label id="legal" class="" for="legal-start-date-horizontal">Legal Start Date</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
                   <input name="interest-start-date-horizontal" id="interest-start-date-horizontal" type="date" class="validate form-control" required>
@@ -518,14 +518,29 @@ include "includes/header.php";
   <!-- Stepper JavaScript - minified -->
   <!-- <script type="text/javascript" src="js/addons-pro/steppers.min.js"></script> -->
 
-  <script src="js/script.js"></script>
+  <script src="js/script1.js"></script>
 
   <!-- Custom Scripts -->
   <script>
     $(document).ready(function () {
       $('.stepper').mdbStepper();
       $('.mdb-select').materialSelect();
+      $("input.form-control").each(function (index, input) { 
+        var $this = $(input); 
+        var $labelAndIcon = $this.siblings('label, i'); 
+        var hasValue = $this.val().length; 
+        var hasPlaceholder = $this.attr('placeholder'); 
+        if (hasValue || hasPlaceholder) { 
+          $labelAndIcon.addClass('active'); 
+        }
+      });
     })
+
+    $('input[type=date]').each(function (element, i) {
+      if ((element.value !== undefined && element.value.length > 0) || $(this).attr('placeholder') !== null) {
+          $(this).siblings('label').addClass('active');
+      }
+    });
 
     function someFunction21() {
       setTimeout(function () {
