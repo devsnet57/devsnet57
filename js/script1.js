@@ -235,4 +235,69 @@ $(document).ready(function () {
   $(".loan__add-btn").on("click", function () {
     $(".loan__container").prepend(renderLoanTypeHTML());
   });
+
+  function renderInvestoryHTML() {
+    const currentLength = $(".investor__content").length;
+
+    const investorsHTML = $(`
+        <div class="investor__content">
+        <div class="row">
+          <div class="md-form col-6 ml-auto">
+            <input name="investors[${currentLength}][investor]" type="text" class="validate form-control" >
+            <label for="investor-horizontal">Investor</label>
+          </div>
+          <div class="md-form col-6 ml-auto">
+            <input name="investors[${currentLength}][investedAmount]" type="number" class="validate form-control">
+            <label for="invested-amount-horizontal">Invested Amount</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="md-form col-6 ml-auto">
+            <input name="investors[${currentLength}][date]" type="date" class="validate form-control date" >
+            <label for="date-horizontal2">Date</label>
+          </div>
+          <div class="md-form col-6 ml-auto">
+            <i class="fas fa-percentage prefix-input-icon"></i> 
+            <input name="investors[${currentLength}][rateOfReturn]" type="number" class="validate form-control">
+            <label for="rate-of-return-horizontal">Rate Of Return</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="md-form col-12 ml-auto">
+            <textarea name="investors[${currentLength}][comments]" class="md-textarea form-control" rows="3"></textarea>
+            <label for="comments-horizontal3">Comments</label>
+          </div>
+        </div>
+      </div>`);
+
+    const removeButton = $(`
+      <div class="d-flex justify-content-center hover investors__remove my-2">
+      <i class="fas fa-times-circle fa-3x text-danger investors__remove-btn"></i>
+    </div>
+      `).on("click", function () {
+      $(this).parent().remove();
+    });
+
+    investorsHTML.append(removeButton);
+
+    return investorsHTML;
+  }
+
+  $(".investors__add-btn").on("click", function () {
+    $(".investors__container").prepend(renderInvestoryHTML());
+  });
+
+  $.each($(".date"), (_, input) => {
+    $(input).on("blur", function () {
+      const parent = $(this).parent();
+      const val = $(this).val();
+      if (val) {
+        $(parent).find("label").addClass("active");
+      }
+    });
+  });
+
+  $("i").on("blur", function () {
+    $(this).removeClass("active");
+  });
 });

@@ -120,7 +120,9 @@ function fetch_dashboard_stats_db(){
 function fetch_all_deals_db(){
     global $conn;
 
-    $sql = "SELECT dealId,u.first_name,u.last_name,u.email,u.role,u.id,fd.dealName FROM form_data fd JOIN users u on u.id = fd.user_id;";
+    $sql = "SELECT dealId,concat(u.first_name,'',u.last_name) as dealCreator,fd.dealName,fd.borrower,fd.loanManager,fd.loanStatus
+            FROM form_data fd 
+            JOIN users u on u.id = fd.user_id;";
     return $conn->query($sql);
 }
 
@@ -153,6 +155,15 @@ function fetch_loan_type_by_deal_id_db($deal_id){
 
     $sql = "SELECT * FROM loan_type
             WHERE form_data_id = $deal_id;";
+    return $conn->query($sql);
+}
+
+function fetch_investors_by_deal_id_db($deal_id){
+    global $conn;
+
+    $sql = "SELECT * FROM investors
+            WHERE form_data_id = $deal_id;";
+
     return $conn->query($sql);
 }
 
@@ -244,11 +255,7 @@ function create_client_and_loan_details_db($user_id){
 
       // Loan Type Details Start
 
-      $investorHorizontal = $_POST['investor-horizontal'];
-      $investedAmountHorizontal = $_POST['invested-amount-horizontal'];
-      $dateHorizontal2 = $_POST['date-horizontal2'];
-      $rateOfReturnHorizontal = $_POST['rate-of-return-horizontal'];
-      $commentsHorizontal3 = $_POST['comments-horizontal3'];
+
 
       $dealName = $_POST['deal-name-horizontal'];
 
@@ -307,11 +314,6 @@ function create_client_and_loan_details_db($user_id){
         creditCheck,
         kyc,
         al,
-        investor,
-        investedAmount, 
-        date2,
-        rateOfReturn,
-        comments3,
         chargeType,
         interestType,
         aipCreator,
@@ -373,11 +375,6 @@ function create_client_and_loan_details_db($user_id){
         '$creditCheck',
         '$kyc',
         '$al',
-        '$investorHorizontal',
-        '$investedAmountHorizontal',
-        '$dateHorizontal2',
-        '$rateOfReturnHorizontal',
-        '$commentsHorizontal3',
         '$chargeType',
         '$interestType',
         '$aipCreator',
@@ -386,14 +383,7 @@ function create_client_and_loan_details_db($user_id){
         '$user_id',
         '$dealName'
    )";
-  
-      try {
-        $conn->query($query); 
-       
-      } catch (\Throwable $th) {
-          print_r($th);
-      }
-  
+    $conn->query($query); 
 
     return $conn->lastInsertId();
 
@@ -477,11 +467,7 @@ function create_form_data_security_value_db($form_id){
     $sql .= implode(",",$values_arr);
     $sql .= ";";
 
-    try {
-        $conn->query($sql);
-    } catch (\Throwable $th) {
-        print_r($th);
-    }
+    $conn->query($sql);
 
 }
 
@@ -520,11 +506,7 @@ function create_form_data_extensions_db($form_id){
     $sql .= implode(",",$values_arr);
     $sql .= ";";
 
-    try {
-        $conn->query($sql);
-    } catch (\Throwable $th) {
-        print_r($th);
-    }
+    $conn->query($sql);
 
 }
 
@@ -566,30 +548,81 @@ function create_form_data_loan_type_db($form_id){
     $sql .= implode(",",$values_arr);
     $sql .= ";";
 
-    try {
         $conn->query($sql);
-    } catch (\Throwable $th) {
-        print_r($th);
+  
+}
+
+function create_form_data_investors_db($form_id){
+    global $conn;
+
+    $investors = isset($_POST['investors'])?$_POST['investors']:null;
+    if(!$investors) return;
+
+
+    $sql = "INSERT INTO investors (   
+    investor,
+    investedAmount,
+    date,
+    rateOfReturn,
+    comments,
+    form_data_id
+    ) VALUES ";
+
+    $values_arr = array();
+
+    foreach ($investors as $key => $value) {
+        
+        $investor = $value['investor'];
+        $investedAmount = $value['investedAmount'];
+        $date = $value['date'];
+        $rateOfReturn = $value['rateOfReturn'];
+        $comments = $value['comments'];
+  
+        $values = "( 
+            '$investor',
+            '$investedAmount',
+            '$date',
+            '$rateOfReturn',
+            '$comments',
+            '$form_id'
+            )";
+
+        array_push($values_arr,$values);
     }
+
+    $sql .= implode(",",$values_arr);
+    $sql .= ";";
+
+    $conn->query($sql);
+  
+
 }
 
 function create_form_data_db($user_id){
-
     $form_id = create_client_and_loan_details_db($user_id);
     create_form_data_security_value_db($form_id);
     create_form_data_extensions_db($form_id);
     create_form_data_loan_type_db($form_id);
+    create_form_data_investors_db($form_id);
 }
 
 function submit_forum(){
-    create_form_data_db($_SESSION['user']['id']);
-    $_SESSION['success'] = "Congratulations! You successfully Submitted The Forum";
-    header("Location:forum.php");
+    try {
+        create_form_data_db($_SESSION['user']['id']);
+        $_SESSION['success'] = "Congratulations! You successfully Submitted The Forum";
+        header("Location:forum.php");
+    } catch (\Throwable $th) {
+        $_SESSION['error'] = "There is some error occured while submitting the form.Please Try Again.";
+    }
 }
 
 function edit_form ($deal_id, $user_id) {
-    delete_previous_record($deal_id);
-    create_form_data_db($user_id );
-    $_SESSION['success'] = "Congratulations! You Form Data Have Been Updated";
-    header("Location:forum.php");
+    try {
+        // delete_previous_record($deal_id);
+        create_form_data_db($user_id);
+        $_SESSION['success'] = "Congratulations! You Form Data Have Been Updated";
+        header("Location:forum.php");
+    } catch (\Throwable $th) {
+        $_SESSION['error'] = "There is some error occured while submitting the form.Please Try Again.";
+    }
 }

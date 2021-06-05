@@ -18,6 +18,7 @@ $deal = fetch_deal_by_deal_id_db($deal_id)->fetch();
 $sv = fetch_security_values_by_deal_id_db($deal_id);
 $ext = fetch_extensions_by_deal_id_db($deal_id);
 $lt = fetch_loan_type_by_deal_id_db($deal_id);
+$investors = fetch_investors_by_deal_id_db($deal_id);
 
 if (isset($_POST['lawyer-ref-horizontal'])) {
     edit_form($deal_id, $user_id);
@@ -50,36 +51,45 @@ include "includes/header.php";
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-pound-sign prefix-input-icon"></i>
                   <input name="gross-purchase-loan-horizontal" id="gross-purchase-loan-horizontal" type="number" class="validate form-control" value="<?=$deal['grossPurchaseLoan']?>">
                   <label for="gross-purchase-loan-horizontal">Gross Purchase Loan (£)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-pound-sign prefix-input-icon"></i>
                   <input name="net-purchase-loan-horizontal" id="net-purchase-loan-horizontal" type="number" class="validate form-control" value="<?=$deal['netPurchaseLoan']?>">
                   <label for="net-purchase-loan-horizontal">Net Purchase Loan (£)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-12 ml-auto">
+                  <i class="fas fa-pound-sign prefix-input-icon"></i>
                   <input name="gross-development-loan-horizontal" id="gross-development-loan-horizontal" type="number" class="validate form-control" value="<?=$deal['grossDevelopmentLoan']?>">
                   <label for="gross-development-loan-horizontal">Gross Development Loan (£)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-pound-sign prefix-input-icon"></i>
                   <input name="net-development-loan-horizontal" id="net-development-loan-horizontal" type="number" class="validate form-control" value="<?=$deal['netDevelopmentLoan']?>">
                   <label for="net-development-loan-horizontal">Net Development Loan (£)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
+                 <i class="fas fa-percentage prefix-input-icon"></i>
+                  <i class="fas fa-percentage-sign prefix-input-icon"></i>
                   <input name="monthly-interest-horizontal" id="monthly-interest-horizontal" type="number" class="validate form-control" value="<?=$deal['monthlyInterest']?>">
                   <label for="monthly-interest-horizontal">Monthly Interest (%)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
+                 <i class="fas fa-percentage prefix-input-icon"></i>
+                  <i class="fas fa-percentage-sign prefix-input-icon"></i>
                   <input name="arrangment-fee-horizontal" id="arrangment-fee-horizontal" type="number" class="validate form-control" value="<?=$deal['arrangmentFee']?>">
                   <label for="arrangment-fee-horizontal">Arrangment Fee (%)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-percentage prefix-input-icon"></i>
                   <input name="exit-fee-horizontal" id="exit-fee-horizontal" type="number" class="validate form-control" value="<?=$deal['exitFee']?>">
                   <label for="exit-fee-horizontal">Exit Fee (%)</label>
                 </div>
@@ -132,40 +142,44 @@ include "includes/header.php";
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="legal-start-date-horizontal" id="legal-start-date-horizontal" type="date" class="validate form-control" value="<?=$deal['legalStartDate']?>">
+                  <input name="legal-start-date-horizontal" id="legal-start-date-horizontal" type="date" class="validate form-control date" value="<?=$deal['legalStartDate']?>">
                   <label for="legal-start-date-horizontal">Legal Start Date</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="interest-start-date-horizontal" id="interest-start-date-horizontal" type="date" class="validate form-control" value="<?=$deal['interestStartDate']?>">
+                  <input name="interest-start-date-horizontal" id="interest-start-date-horizontal" type="date" class="validate form-control date" value="<?=$deal['interestStartDate']?>">
                   <label for="interest-start-date-horizontal">Interest Start Date</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
-                  <input name="max-date-horizontal" id="max-date-horizontal" type="date" class="validate form-control" value="<?=$deal['maxDate']?>">
+                  <input name="max-date-horizontal" id="max-date-horizontal" type="date" class="validate form-control date" value="<?=$deal['maxDate']?>">
                   <label for="max-date-horizontal">Max Date</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                  <input name="radeemed-date-horizontal" id="radeemed-date-horizontal" type="date" class="validate form-control" value="<?=$deal['redeemedDate']?>">
+                  <input name="radeemed-date-horizontal" id="radeemed-date-horizontal" type="date" class="validate form-control date" value="<?=$deal['redeemedDate']?>">
                   <label for="radeemed-date-horizontal">Radeemed Date</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-percentage-sign prefix-input-icon"></i>
                   <input name="loan-to-value-horizontal" id="loan-to-value-horizontal" type="number" class="validate form-control" value="<?=$deal['loanToValue']?>">
                   <label for="loan-to-value-horizontal">Loan to Value (%)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-percentage-sign prefix-input-icon"></i>
                   <input name="loan-to-cost-horizontal" id="loan-to-cost-horizontal" type="number" class="validate form-control" value="<?=$deal['loanToCost']?>">
                   <label for="loan-to-cost-horizontal">Loan to Cost (%)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-percentage-sign prefix-input-icon"></i>
                   <input name="loan-to-gross-development-value-horizontal" id="loan-to-gross-development-value-horizontal" type="number" class="validate form-control" value="<?=$deal['loanToGrossDevelopmentValue']?>">
                   <label for="loan-to-gross-development-value-horizontal">Loan to Gross Development Value (%)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
+                  <i class="fas fa-percentage-sign prefix-input-icon"></i>
                   <input name="loan-to-purchase-horizontal" id="loan-to-purchase-horizontal" type="number" class="validate form-control" value="<?=$deal['loanToPurchase']?>">
                   <label for="loan-to-purchase-horizontal">Loan to Purchase (%)</label>
                 </div>
@@ -482,7 +496,7 @@ include "includes/header.php";
                         </div>
                         <div class="row">
                         <div class="md-form col-6 ml-auto">
-                            <input name="<?="security-values[$counter]"?>[date-valued]" type="date" class="validate form-control"  value="<?=$row['dateValued']?>" >
+                            <input name="<?="security-values[$counter]"?>[date-valued]" type="date" class="validate form-control date"  value="<?=$row['dateValued']?>" >
                             <label for="date-valued-horizontal">Date Valued</label>
                         </div>
                         <div class="md-form col-6 ml-auto">
@@ -547,6 +561,7 @@ include "includes/header.php";
                             <label for="extension-horizontal">Extension</label>
                         </div>
                         <div class="md-form col-6 ml-auto">
+                            <i class="fas fa-percentage-sign prefix-input-icon"></i>
                             <input name="<?="extensions[$counter][fee]"?>" type="text" class="validate form-control"value="<?=$row['extFee']?>">
                             <label for="ext-horizontal">Ext. Fee (%)</label>
                         </div>
@@ -600,7 +615,7 @@ include "includes/header.php";
                     <label for="amount-horizontal">Amount (£)</label>
                 </div>
                 <div class="md-form col-6 ml-auto">
-                    <input name="<?="loan[$counter][date]"?>" type="date" class="validate form-control" value=<?=$row['dateD']?>>
+                    <input name="<?="loan[$counter][date]"?>" type="date" class="validate form-control date" value=<?=$row['dateD']?>>
                     <label for="date-horizontal">Date</label>
                 </div>
                 </div>
@@ -634,33 +649,49 @@ include "includes/header.php";
           <li class="step">
             <div class="step-title waves-effect waves-dark">Investor Details</div>
             <div class="step-new-content">
-              <div class="row">
-                <div class="md-form col-6 ml-auto">
-                  <input name="investor-horizontal" type="text" class="validate form-control" value="<?=$deal['investor']?>">
-                  <label for="investor-horizontal">Investor</label>
+
+              <div class="d-flex justify-content-center hover my-4 investors__add">
+                  <i class="fas fa-plus-circle text-primary fa-3x investors__add-btn"></i>
                 </div>
-                <div class="md-form col-6 ml-auto">
-                  <input name="invested-amount-horizontal" type="number" class="validate form-control" value="<?=$deal['investedAmount']?>">
-                  <label for="invested-amount-horizontal">Invested Amount</label>
+
+            <div class="investor__container">
+            <?php $counter = 0;foreach ($investors as $row): ?>
+              <div class="investor__content">
+                <div class="row">
+                  <div class="md-form col-6 ml-auto">
+                    <input name="<?="investors[$counter][investor]"?>" type="text" class="validate form-control" value="<?=$row['investor']?>" >
+                    <label for="investor-horizontal">Investor</label>
+                  </div>
+                  <div class="md-form col-6 ml-auto">
+                    <input name="<?="investors[$counter][investedAmount]"?>" type="number" class="validate form-control" value="<?=$row['investedAmount']?>">
+                    <label for="invested-amount-horizontal">Invested Amount</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="md-form col-6 ml-auto">
+                    <input name="<?="investors[$counter][date]"?>" type="date" class="validate form-control date" value="<?=$row['date']?>" >
+                    <label for="date-horizontal2">Date</label>
+                  </div>
+                  <div class="md-form col-6 ml-auto">
+                    <i class="fas fa-percentage prefix-input-icon"></i> 
+                    <input name="<?="investors[$counter][rateOfReturn]"?>" type="number" class="validate form-control" value="<?=$row['rateOfReturn']?>">
+                    <label for="rate-of-return-horizontal">Rate Of Return</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="md-form col-12 ml-auto">
+                    <textarea name="<?="investors[$counter][comments]"?>" class="md-textarea form-control" rows="3"><?=$row['comments']?></textarea>
+                    <label for="comments-horizontal3">Comments</label>
+                  </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="md-form col-6 ml-auto">
-                  <input name="date-horizontal2" type="date" class="validate form-control" value="<?=$deal['date2']?>">
-                  <label for="date-horizontal2">Date</label>
-                </div>
-                <div class="md-form col-6 ml-auto">
-                  <input name="rate-of-return-horizontal" type="number" class="validate form-control" value="<?=$deal['rateOfReturn']?>">
-                  <label for="rate-of-return-amount-horizontal">Rate of Return (%)</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="md-form col-12 ml-auto">
-                  <textarea name="comments-horizontal3" class="md-textarea form-control" rows="3"><?=$deal['comments3']?></textarea>
-                  <!-- <input id="extension-horizontal" type="number" class="validate form-control"> -->
-                  <label for="comments-horizontal3">Comments</label>
-                </div>
-              </div>
+
+              <?php $counter++; ?>
+              
+            <?php endforeach; ?>
+
+            </div>
+            
               <div class="row mt-4">
                 <!-- <div class="step-actions"> -->
                   <button class="waves-effect waves-dark btn btn-warning btn-rounded previous-step">BACK</button>

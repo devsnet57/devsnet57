@@ -29,11 +29,11 @@ include "includes/header.php";
             <tr>
             <th scope="col">Deal Id</th>
             <th scope="col">Deal Name</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Action</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Deal Creator</th>
+            <th scope="col">Deal Manager</th>
+            <th scope="col">Loan Status</th>
+            <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -42,10 +42,10 @@ include "includes/header.php";
             <tr>
                 <td><?=$row['dealId']?></td>
                 <td><?=$row['dealName']?></td>
-                <td><?=$row['first_name']?></td>
-                <td><?=$row['last_name']?></td>
-                <td><?=$row['email']?></td>
-                <td><?=$row['role']?></td>
+                <td><?=$row['borrower']?></td>
+                <td><?=$row['dealCreator']?></td>
+                <td><?=$row['loanManager']?></td>
+                <td><?=$row['loanStatus']?></td>
                 <td><a href="<?="edit-forum.php?dealId=" . $row['dealId'] . "&user_id=" . $row['id']?>" class="btn btn-warning">Edit</a></td>
             </tr>
 

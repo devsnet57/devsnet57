@@ -5,3 +5,11 @@ body {
 .hover:hover {
   cursor: pointer;
 }
+
+.prefix-input-icon {
+  color: #a8a8a8;
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+}
