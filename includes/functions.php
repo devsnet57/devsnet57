@@ -120,7 +120,7 @@ function fetch_dashboard_stats_db(){
 function fetch_all_deals_db(){
     global $conn;
 
-    $sql = "SELECT dealId,concat(u.first_name,'',u.last_name) as dealCreator,fd.dealName,fd.borrower,fd.loanManager,fd.loanStatus
+    $sql = "SELECT dealId,concat(u.first_name,'',u.last_name) as dealCreator,fd.dealName,fd.borrower,fd.loanManager,fd.loanStatus,u.id
             FROM form_data fd 
             JOIN users u on u.id = fd.user_id;";
     return $conn->query($sql);
